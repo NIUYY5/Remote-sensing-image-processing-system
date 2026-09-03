@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UI version="4.0" >
+ <class>mobanClass</class>
+ <widget class="QMainWindow" name="mobanClass" >
+  <property name="objectName" >
+   <string notr="true">mobanClass</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>遥感图像处理系统 v1.0</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="moban.qrc">
+    <normaloff>icons/app_icon.svg</normaloff>icons/app_icon.svg</iconset>
+  </property>
+  <property name="dockOptions" >
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle" >
+    <string>主工具栏</string>
+   </property>
+   <property name="movable" >
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actNewProject">
+   <property name="text">
+    <string>新建工程(&amp;N)...</string>
+   </property>
+   <property name="toolTip">
+    <string>新建工程 (Ctrl+N)</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/new_project.svg</normaloff>icons/new_project.svg</iconset>
+   </property>
+  </action>
+  <action name="actOpenProject">
+   <property name="text">
+    <string>打开工程(&amp;O)...</string>
+   </property>
+   <property name="toolTip">
+    <string>打开工程 (Ctrl+O)</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/open_project.svg</normaloff>icons/open_project.svg</iconset>
+   </property>
+  </action>
+  <action name="actSaveProject">
+   <property name="text">
+    <string>保存工程(&amp;S)</string>
+   </property>
+   <property name="toolTip">
+    <string>保存工程 (Ctrl+S)</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/save_project.svg</normaloff>icons/save_project.svg</iconset>
+   </property>
+  </action>
+  <action name="actSaveProjectAs">
+   <property name="text">
+    <string>工程另存为(&amp;A)...</string>
+   </property>
+   <property name="toolTip">
+    <string>工程另存为</string>
+   </property>
+  </action>
+  <action name="actImportImage">
+   <property name="text">
+    <string>导入图像(&amp;I)...</string>
+   </property>
+   <property name="toolTip">
+    <string>导入图像 (Ctrl+I)</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/import_image.svg</normaloff>icons/import_image.svg</iconset>
+   </property>
+  </action>
+  <action name="actCloseProject">
+   <property name="text">
+    <string>关闭工程(&amp;C)</string>
+   </property>
+   <property name="toolTip">
+    <string>关闭当前工程</string>
+   </property>
+  </action>
+  <action name="actExit">
+   <property name="text">
+    <string>退出(&amp;X)</string>
+   </property>
+   <property name="toolTip">
+    <string>退出程序</string>
+   </property>
+  </action>
+  <action name="actUndo">
+   <property name="text">
+    <string>撤销(&amp;U)</string>
+   </property>
+  </action>
+  <action name="actRedo">
+   <property name="text">
+    <string>重做(&amp;R)</string>
+   </property>
+  </action>
+  <action name="actZoomIn">
+   <property name="text">
+    <string>放大(&amp;I)</string>
+   </property>
+   <property name="toolTip">
+    <string>放大 (Ctrl++)</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/zoom_in.svg</normaloff>icons/zoom_in.svg</iconset>
+   </property>
+  </action>
+  <action name="actZoomOut">
+   <property name="text">
+    <string>缩小(&amp;O)</string>
+   </property>
+   <property name="toolTip">
+    <string>缩小 (Ctrl+-)</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/zoom_out.svg</normaloff>icons/zoom_out.svg</iconset>
+   </property>
+  </action>
+  <action name="actZoomFit">
+   <property name="text">
+    <string>适应窗口(&amp;F)</string>
+   </property>
+   <property name="toolTip">
+    <string>适应窗口 (Ctrl+0)</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/zoom_fit.svg</normaloff>icons/zoom_fit.svg</iconset>
+   </property>
+  </action>
+  <action name="actGeoReg">
+   <property name="text">
+    <string>几何配准(&amp;G)...</string>
+   </property>
+   <property name="toolTip">
+    <string>基于卫星影像的几何配准</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/geometric_registration.svg</normaloff>icons/geometric_registration.svg</iconset>
+   </property>
+  </action>
+  <action name="actImageStitch">
+   <property name="text">
+    <string>影像拼接(&amp;M)...</string>
+   </property>
+   <property name="toolTip">
+    <string>两幅影像的传统/深度学习拼接</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/image_fusion.svg</normaloff>icons/image_fusion.svg</iconset>
+   </property>
+  </action>
+  <action name="actImageFusion">
+   <property name="text">
+    <string>影像融合(&amp;F)...</string>
+   </property>
+   <property name="toolTip">
+    <string>基于配准影像的影像融合</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/image_fusion.svg</normaloff>icons/image_fusion.svg</iconset>
+   </property>
+  </action>
+  <action name="actClassification">
+   <property name="text">
+    <string>地物提取(&amp;C)...</string>
+   </property>
+   <property name="toolTip">
+    <string>基于融合影像的地物提取</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/classification.svg</normaloff>icons/classification.svg</iconset>
+   </property>
+  </action>
+  <action name="actSettings">
+   <property name="text">
+    <string>设置(&amp;S)...</string>
+   </property>
+   <property name="toolTip">
+    <string>软件设置</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/settings.svg</normaloff>icons/settings.svg</iconset>
+   </property>
+  </action>
+  <action name="actAbout">
+   <property name="text">
+    <string>关于(&amp;A)...</string>
+   </property>
+   <property name="toolTip">
+    <string>关于软件</string>
+   </property>
+   <property name="icon">
+    <iconset resource="moban.qrc">
+     <normaloff>icons/about.svg</normaloff>icons/about.svg</iconset>
+   </property>
+  </action>
+  <action name="actHelp">
+   <property name="text">
+    <string>使用帮助(&amp;H)</string>
+   </property>
+  </action>
+  <action name="actToggleDataDock">
+   <property name="text">
+    <string>数据管理窗口(&amp;D)</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actToggleOutputDock">
+   <property name="text">
+    <string>输出窗口(&amp;O)</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actToggleToolBar">
+   <property name="text">
+    <string>工具栏(&amp;T)</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </action>
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+   <include location="moban.qrc"/>
+ </resources>
+ <connections/>
+</UI>

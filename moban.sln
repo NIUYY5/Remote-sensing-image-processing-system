@@ -1,0 +1,25 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "moban", "moban.vcxproj", "{F0C40866-42AE-4DC9-9ECC-60CA4C2E4628}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0C40866-42AE-4DC9-9ECC-60CA4C2E4628}.Debug|x64.ActiveCfg = Debug|x64
+		{F0C40866-42AE-4DC9-9ECC-60CA4C2E4628}.Debug|x64.Build.0 = Debug|x64
+		{F0C40866-42AE-4DC9-9ECC-60CA4C2E4628}.Release|x64.ActiveCfg = Release|x64
+		{F0C40866-42AE-4DC9-9ECC-60CA4C2E4628}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A90383A-0BF1-4786-B0E4-2B4AC273DF80}
+	EndGlobalSection
+EndGlobal

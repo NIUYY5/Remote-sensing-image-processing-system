@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UI version="4.0">
+ <class>StitchDialog</class>
+ <widget class="QDialog" name="StitchDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>影像拼接</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="moban.qrc">
+    <normaloff>icons/image_fusion.svg</normaloff>icons/image_fusion.svg</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <widget class="QSplitter" name="mainSplitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QWidget" name="leftPanel">
+      <layout class="QVBoxLayout" name="leftPanelLayout">
+       <item>
+        <widget class="QGroupBox" name="inputGroup">
+         <property name="title">
+          <string>输入影像</string>
+         </property>
+         <layout class="QFormLayout" name="inputFormLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="img1Label">
+            <property name="text">
+             <string>左/上影像:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="img1Layout">
+            <item>
+             <widget class="QLineEdit" name="img1PathEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="img1BrowseBtn">
+              <property name="text">
+               <string>浏览...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="img2Label">
+            <property name="text">
+             <string>右/下影像:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="img2Layout">
+            <item>
+             <widget class="QLineEdit" name="img2PathEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="img2BrowseBtn">
+              <property name="text">
+               <string>浏览...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="outputGroup">
+         <property name="title">
+          <string>输出路径</string>
+         </property>
+         <layout class="QVBoxLayout" name="outputLayout">
+          <item>
+           <layout class="QHBoxLayout" name="outputPathLayout">
+            <item>
+             <widget class="QLineEdit" name="outputPathEdit">
+              <property name="placeholderText">
+               <string>拼接结果保存路径（留空则关闭后手动选择）</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="outputBrowseBtn">
+              <property name="text">
+               <string>浏览...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="algorithmGroup">
+         <property name="title">
+          <string>拼接算法</string>
+         </property>
+         <layout class="QVBoxLayout" name="algorithmLayout">
+          <item>
+           <widget class="QComboBox" name="algorithmCombo">
+            <item>
+             <property name="text">
+              <string>传统拼接（特征匹配+线性渐变融合）</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>深度学习拼接（多尺度边缘感知融合）</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="rpcModeCheckBox">
+            <property name="text">
+             <string>RPC有理多项式精确拼接（基于RPC参数文件）</string>
+            </property>
+            <property name="toolTip">
+             <string>启用后读取影像对应的RPC(.RPB/.RPC/_RPC.TXT)有理多项式系数文件进行高精度地理坐标配准拼接</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="rpcParamGroup">
+            <property name="title">
+             <string>RPC参数</string>
+            </property>
+            <layout class="QFormLayout" name="rpcParamFormLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="rpcHeightLabel">
+               <property name="text">
+                <string>参考高程(m):</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QDoubleSpinBox" name="rpcHeightSpinBox">
+               <property name="minimum">
+                <double>-9999.00</double>
+               </property>
+               <property name="maximum">
+                <double>9999.00</double>
+               </property>
+               <property name="singleStep">
+                <double>10.00</double>
+               </property>
+               <property name="value">
+                <double>0.00</double>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="rpcResolutionLabel">
+               <property name="text">
+                <string>输出分辨率(°):</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="rpcResolutionSpinBox">
+               <property name="decimals">
+                <number>10</number>
+               </property>
+               <property name="minimum">
+                <double>0.0000000000</double>
+               </property>
+               <property name="maximum">
+                <double>1.0000000000</double>
+               </property>
+               <property name="singleStep">
+                <double>0.0000100000</double>
+               </property>
+               <property name="value">
+                <double>0.0000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="img1RpcLabel">
+               <property name="text">
+                <string>影像1 RPC文件:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <layout class="QHBoxLayout" name="img1RpcLayout">
+               <item>
+                <widget class="QLineEdit" name="img1RpcPathEdit">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="placeholderText">
+                  <string>自动搜索或手动指定</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="img1RpcBrowseBtn">
+                 <property name="text">
+                  <string>浏览...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="img2RpcLabel">
+               <property name="text">
+                <string>影像2 RPC文件:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <layout class="QHBoxLayout" name="img2RpcLayout">
+               <item>
+                <widget class="QLineEdit" name="img2RpcPathEdit">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="placeholderText">
+                  <string>自动搜索或手动指定</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="img2RpcBrowseBtn">
+                 <property name="text">
+                  <string>浏览...</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="geoCoordinateCheckBox">
+            <property name="text">
+             <string>使用地理坐标精确拼接（基于影像嵌入的地理坐标元数据）</string>
+            </property>
+            <property name="toolTip">
+             <string>启用后直接使用影像文件中的地理坐标信息（GeoTIFF标签、World文件等）进行精确配准拼接，无需特征匹配</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="geoInfoLabel">
+            <property name="text">
+             <string></string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="styleSheet">
+             <string>color: #888; font-size: 11px;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="paramGroup">
+         <property name="title">
+          <string>拼接参数</string>
+         </property>
+         <layout class="QFormLayout" name="paramFormLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="featureLabel">
+            <property name="text">
+             <string>特征检测:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="featureCombo">
+            <item>
+             <property name="text">
+              <string>SIFT-like（类SIFT）</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>FAST角点</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Harris角点</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="matchLabel">
+            <property name="text">
+             <string>匹配方法:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="matchCombo">
+            <item>
+             <property name="text">
+              <string>归一化互相关 (NCC)</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>平方差和 (SSD)</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="ransacLabel">
+            <property name="text">
+             <string>RANSAC阈值:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="ransacSpinBox">
+            <property name="minimum">
+             <double>0.50</double>
+            </property>
+            <property name="maximum">
+             <double>20.00</double>
+            </property>
+            <property name="singleStep">
+             <double>0.50</double>
+            </property>
+            <property name="value">
+             <double>3.00</double>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="blendLabel">
+            <property name="text">
+             <string>融合方式:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="blendCombo">
+            <item>
+             <property name="text">
+              <string>线性渐变融合</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>简单平均融合</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>多频带融合</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="blendWidthLabel">
+            <property name="text">
+             <string>融合宽度:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSpinBox" name="blendWidthSpinBox">
+            <property name="minimum">
+             <number>4</number>
+            </property>
+            <property name="maximum">
+             <number>512</number>
+            </property>
+            <property name="value">
+             <number>64</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="actionLayout">
+         <item>
+          <widget class="QPushButton" name="executeBtn">
+           <property name="text">
+            <string>执行拼接</string>
+           </property>
+           <property name="minimumHeight">
+            <number>36</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTabWidget" name="resultTabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="previewTab">
+       <attribute name="title">
+        <string>影像预览</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="previewTabLayout">
+        <item>
+         <widget class="QFrame" name="previewToolbarFrame">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>36</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="previewToolbarLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QToolButton" name="zoomInBtn">
+             <property name="text">
+              <string>放大</string>
+             </property>
+             <property name="toolTip">
+              <string>放大 (Ctrl+滚轮)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="zoomOutBtn">
+             <property name="text">
+              <string>缩小</string>
+             </property>
+             <property name="toolTip">
+              <string>缩小</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="zoomFitBtn">
+             <property name="text">
+              <string>适应窗口</string>
+             </property>
+             <property name="toolTip">
+              <string>适应窗口</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="zoomOriginalBtn">
+             <property name="text">
+              <string>原始大小</string>
+             </property>
+             <property name="toolTip">
+              <string>100%</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="zoomSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="zoomLevelLabel">
+             <property name="text">
+              <string>100%</string>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTabWidget" name="previewSubTab">
+          <property name="tabPosition">
+           <enum>QTabWidget::North</enum>
+          </property>
+          <widget class="QWidget" name="img1PreviewTab">
+           <attribute name="title">
+            <string>左/上影像</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="img1PreviewLayout">
+            <item>
+             <widget class="QGraphicsView" name="img1PreviewView"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="img2PreviewTab">
+           <attribute name="title">
+            <string>右/下影像</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="img2PreviewLayout">
+            <item>
+             <widget class="QGraphicsView" name="img2PreviewView"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="resultPreviewTab">
+           <attribute name="title">
+            <string>拼接结果</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="resultPreviewLayout">
+            <item>
+             <widget class="QGraphicsView" name="resultPreviewView"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="progressTab">
+       <attribute name="title">
+        <string>处理日志</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="progressTabLayout">
+        <item>
+         <widget class="QTextEdit" name="logTextEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QProgressBar" name="progressBar">
+          <property name="value">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="bottomLayout">
+     <item>
+      <spacer name="bottomSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveBtn">
+       <property name="text">
+        <string>保存结果</string>
+       </property>
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="closeBtn">
+       <property name="text">
+        <string>关闭</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="moban.qrc"/>
+ </resources>
+ <connections/>
+</UI>
