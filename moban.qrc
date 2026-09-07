@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="moban">
+        <file>icons/new_project.svg</file>
+        <file>icons/open_project.svg</file>
+        <file>icons/save_project.svg</file>
+        <file>icons/import_image.svg</file>
+        <file>icons/geometric_registration.svg</file>
+        <file>icons/image_fusion.svg</file>
+        <file>icons/classification.svg</file>
+        <file>icons/zoom_in.svg</file>
+        <file>icons/zoom_out.svg</file>
+        <file>icons/zoom_fit.svg</file>
+        <file>icons/image_mosaic.svg</file>
+        <file>icons/settings.svg</file>
+        <file>icons/about.svg</file>
+        <file>icons/app_icon.svg</file>
+        <file>background.jpg</file>
+    </qresource>
+</RCC>
