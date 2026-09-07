@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\软件框架">
+      <UniqueIdentifier>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\几何配准">
+      <UniqueIdentifier>{B2C3D4E5-F6A7-8901-BCDE-F12345678901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\影像融合">
+      <UniqueIdentifier>{C3D4E5F6-A7B8-9012-CDEF-123456789012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\地物识别">
+      <UniqueIdentifier>{D4E5F6A7-B8C9-0123-DEF0-234567890123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\软件框架">
+      <UniqueIdentifier>{E5F6A7B8-C9D0-1234-EF01-345678901234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\几何配准">
+      <UniqueIdentifier>{F6A7B8C9-D0E1-2345-F012-456789012345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\影像融合">
+      <UniqueIdentifier>{A7B8C9D0-E1F2-3456-0123-567890123456}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\地物识别">
+      <UniqueIdentifier>{B8C9D0E1-F2A3-4567-1234-678901234567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+  </ItemGroup>
+
+  <!-- ================================================================ -->
+  <!-- Qt Resource / UI 文件                                             -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <QtRcc Include="moban.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtRcc Include="FeatureExtraction4.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="moban.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="fusion_dialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="FeatureExtraction4.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+
+  <!-- ================================================================ -->
+  <!-- QtMoc: 含 Q_OBJECT 宏的头文件                                      -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <!-- 软件框架 -->
+    <QtMoc Include="moban.h">
+      <Filter>Header Files\软件框架</Filter>
+    </QtMoc>
+    <QtMoc Include="login_dialog.h">
+      <Filter>Header Files\软件框架</Filter>
+    </QtMoc>
+    <QtMoc Include="split_view.h">
+      <Filter>Header Files\软件框架</Filter>
+    </QtMoc>
+    <!-- 几何配准 -->
+    <QtMoc Include="jihepeizhun.h">
+      <Filter>Header Files\几何配准</Filter>
+    </QtMoc>
+    <QtMoc Include="imageview.h">
+      <Filter>Header Files\几何配准</Filter>
+    </QtMoc>
+    <QtMoc Include="accuracydialog.h">
+      <Filter>Header Files\几何配准</Filter>
+    </QtMoc>
+    <QtMoc Include="orthodialog.h">
+      <Filter>Header Files\几何配准</Filter>
+    </QtMoc>
+    <QtMoc Include="pickmanager.h">
+      <Filter>Header Files\几何配准</Filter>
+    </QtMoc>
+    <!-- 影像融合 -->
+    <QtMoc Include="fusion_dialog.h">
+      <Filter>Header Files\影像融合</Filter>
+    </QtMoc>
+    <!-- 地物识别 -->
+    <QtMoc Include="FeatureExtraction4.h">
+      <Filter>Header Files\地物识别</Filter>
+    </QtMoc>
+    <QtMoc Include="AccuracyAssessment.h">
+      <Filter>Header Files\地物识别</Filter>
+    </QtMoc>
+    <QtMoc Include="ClassificationEngine.h">
+      <Filter>Header Files\地物识别</Filter>
+    </QtMoc>
+    <QtMoc Include="ClusteringEngine.h">
+      <Filter>Header Files\地物识别</Filter>
+    </QtMoc>
+    <QtMoc Include="ExportManager.h">
+      <Filter>Header Files\地物识别</Filter>
+    </QtMoc>
+    <QtMoc Include="FeatureExtractor.h">
+      <Filter>Header Files\地物识别</Filter>
+    </QtMoc>
+    <QtMoc Include="LandCoverExtractor.h">
+      <Filter>Header Files\地物识别</Filter>
+    </QtMoc>
+  </ItemGroup>
+
+  <!-- ================================================================ -->
+  <!-- ClInclude: 普通头文件                                              -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <!-- 软件框架 -->
+    <ClInclude Include="gdal_loader.h">
+      <Filter>Header Files\软件框架</Filter>
+    </ClInclude>
+    <!-- 几何配准 -->
+    <ClInclude Include="automatch.h">
+      <Filter>Header Files\几何配准</Filter>
+    </ClInclude>
+    <ClInclude Include="controlpoint.h">
+      <Filter>Header Files\几何配准</Filter>
+    </ClInclude>
+    <ClInclude Include="geomodel.h">
+      <Filter>Header Files\几何配准</Filter>
+    </ClInclude>
+    <!-- 影像融合 -->
+    <ClInclude Include="fusion_core.h">
+      <Filter>Header Files\影像融合</Filter>
+    </ClInclude>
+    <!-- 地物识别 -->
+    <ClInclude Include="GeoImageData.h">
+      <Filter>Header Files\地物识别</Filter>
+    </ClInclude>
+  </ItemGroup>
+
+  <!-- ================================================================ -->
+  <!-- ClCompile: 源文件                                                  -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <!-- 软件框架 -->
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\软件框架</Filter>
+    </ClCompile>
+    <ClCompile Include="moban.cpp">
+      <Filter>Source Files\软件框架</Filter>
+    </ClCompile>
+    <ClCompile Include="login_dialog.cpp">
+      <Filter>Source Files\软件框架</Filter>
+    </ClCompile>
+    <ClCompile Include="gdal_loader.cpp">
+      <Filter>Source Files\软件框架</Filter>
+    </ClCompile>
+    <ClCompile Include="split_view.cpp">
+      <Filter>Source Files\软件框架</Filter>
+    </ClCompile>
+    <!-- 几何配准 -->
+    <ClCompile Include="zhupeizhun.cpp">
+      <Filter>Source Files\几何配准</Filter>
+    </ClCompile>
+    <ClCompile Include="accuracydialog.cpp">
+      <Filter>Source Files\几何配准</Filter>
+    </ClCompile>
+    <ClCompile Include="automatch.cpp">
+      <Filter>Source Files\几何配准</Filter>
+    </ClCompile>
+    <ClCompile Include="geomodel.cpp">
+      <Filter>Source Files\几何配准</Filter>
+    </ClCompile>
+    <ClCompile Include="imageview.cpp">
+      <Filter>Source Files\几何配准</Filter>
+    </ClCompile>
+    <ClCompile Include="orthodialog.cpp">
+      <Filter>Source Files\几何配准</Filter>
+    </ClCompile>
+    <ClCompile Include="pickmanager.cpp">
+      <Filter>Source Files\几何配准</Filter>
+    </ClCompile>
+    <!-- 影像融合 -->
+    <ClCompile Include="fusion_dialog.cpp">
+      <Filter>Source Files\影像融合</Filter>
+    </ClCompile>
+    <ClCompile Include="fusion_core.cpp">
+      <Filter>Source Files\影像融合</Filter>
+    </ClCompile>
+    <!-- 地物识别 -->
+    <ClCompile Include="FeatureExtraction4.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+    <ClCompile Include="AccuracyAssessment.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassificationEngine.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+    <ClCompile Include="ClusteringEngine.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportManager.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+    <ClCompile Include="FeatureExtractor.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+    <ClCompile Include="GeoImageData.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+    <ClCompile Include="LandCoverExtractor.cpp">
+      <Filter>Source Files\地物识别</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
