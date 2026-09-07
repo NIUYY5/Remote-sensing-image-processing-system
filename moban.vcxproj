@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F0C40866-42AE-4DC9-9ECC-60CA4C2E4628}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.15.2_msvc2019_64</QtInstall>
+    <QtModules>core;gui;svg;widgets;charts;printsupport</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.15.2_msvc2019_64</QtInstall>
+    <QtModules>core;gui;svg;widgets;charts;printsupport</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <!-- GDAL_ROOT: set as system env var pointing to GDAL install root (e.g. D:\gdal\x64-windows) -->
+  <PropertyGroup Label="UserMacros">
+    <GDAL_ROOT Condition="'$(GDAL_ROOT)'==''">$([System.Environment]::GetEnvironmentVariable('GDAL_ROOT'))</GDAL_ROOT>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\jysj\xiaozushixi\yaogan\gdal-3.11.0-x64-windows\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>E:\jysj\xiaozushixi\yaogan\gdal-3.11.0-x64-windows\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gdal.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\jysj\xiaozushixi\yaogan\gdal-3.11.0-x64-windows\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>E:\jysj\xiaozushixi\yaogan\gdal-3.11.0-x64-windows\x64-windows\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gdal.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <!-- ================================================================ -->
+  <!-- Qt Resource / UI 文件                                             -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <QtRcc Include="moban.qrc" />
+    <QtRcc Include="FeatureExtraction4.qrc" />
+    <QtUic Include="moban.ui" />
+    <QtUic Include="fusion_dialog.ui" />
+    <QtUic Include="FeatureExtraction4.ui" />
+  </ItemGroup>
+  <!-- ================================================================ -->
+  <!-- QtMoc: 含 Q_OBJECT 宏的头文件 (自动生成 moc_*.cpp)                 -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <!-- 软件框架 -->
+    <QtMoc Include="moban.h" />
+    <QtMoc Include="login_dialog.h" />
+    <QtMoc Include="split_view.h" />
+    <!-- 几何配准模块 -->
+    <QtMoc Include="jihepeizhun.h" />
+    <QtMoc Include="imageview.h" />
+    <QtMoc Include="accuracydialog.h" />
+    <QtMoc Include="orthodialog.h" />
+    <QtMoc Include="pickmanager.h" />
+    <!-- 影像融合模块 -->
+    <QtMoc Include="fusion_dialog.h" />
+    <!-- 地物识别模块 -->
+    <QtMoc Include="FeatureExtraction4.h" />
+    <QtMoc Include="AccuracyAssessment.h" />
+    <QtMoc Include="ClassificationEngine.h" />
+    <QtMoc Include="ClusteringEngine.h" />
+    <QtMoc Include="ExportManager.h" />
+    <QtMoc Include="FeatureExtractor.h" />
+    <QtMoc Include="LandCoverExtractor.h" />
+  </ItemGroup>
+  <!-- ================================================================ -->
+  <!-- ClInclude: 普通头文件 (不含 Q_OBJECT)                              -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <!-- 软件框架 -->
+    <ClInclude Include="gdal_loader.h" />
+    <!-- 几何配准模块 -->
+    <ClInclude Include="automatch.h" />
+    <ClInclude Include="controlpoint.h" />
+    <ClInclude Include="geomodel.h" />
+    <!-- 影像融合模块 -->
+    <ClInclude Include="fusion_core.h" />
+    <!-- 地物识别模块 -->
+    <ClInclude Include="GeoImageData.h" />
+  </ItemGroup>
+  <!-- ================================================================ -->
+  <!-- ClCompile: 源文件                                                 -->
+  <!-- ================================================================ -->
+  <ItemGroup>
+    <!-- 软件框架 -->
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="moban.cpp" />
+    <ClCompile Include="login_dialog.cpp" />
+    <ClCompile Include="gdal_loader.cpp" />
+    <ClCompile Include="split_view.cpp" />
+    <!-- 几何配准模块 -->
+    <ClCompile Include="zhupeizhun.cpp" />
+    <ClCompile Include="accuracydialog.cpp" />
+    <ClCompile Include="automatch.cpp" />
+    <ClCompile Include="geomodel.cpp" />
+    <ClCompile Include="imageview.cpp" />
+    <ClCompile Include="orthodialog.cpp" />
+    <ClCompile Include="pickmanager.cpp" />
+    <!-- 影像融合模块 -->
+    <ClCompile Include="fusion_dialog.cpp" />
+    <ClCompile Include="fusion_core.cpp" />
+    <!-- 地物识别模块 -->
+    <ClCompile Include="FeatureExtraction4.cpp" />
+    <ClCompile Include="AccuracyAssessment.cpp" />
+    <ClCompile Include="ClassificationEngine.cpp" />
+    <ClCompile Include="ClusteringEngine.cpp" />
+    <ClCompile Include="ExportManager.cpp" />
+    <ClCompile Include="FeatureExtractor.cpp" />
+    <ClCompile Include="GeoImageData.cpp" />
+    <ClCompile Include="LandCoverExtractor.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
